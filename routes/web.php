@@ -34,6 +34,7 @@ Route::get('/bookshops', 'BookshopController@index');
 
 
 Route::post('/books/{id}/review', 'BookController@storeReview')->middleware('auth');
+Route::post('/books/reviews/delete', 'BookController@deleteReview');
 
 // authors
 Route::get('/authors', 'AuthorController@index');

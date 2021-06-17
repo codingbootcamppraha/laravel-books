@@ -58,6 +58,16 @@
     @foreach($book->reviews as $review)
         <p>
             {{ $review->text }}
+
+            @can('admin')
+                You can remove review
+
+                <form method="post" action="{{ action('BookController@deleteReview') }}">
+                    @csrf
+                    <input type="hidden" name="review_id" value="{{ $review->id }}">
+                    <input type="Submit" value="Delete">
+                </form>
+            @endcan
         </p>
     @endforeach
 

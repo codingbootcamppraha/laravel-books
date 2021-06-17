@@ -134,4 +134,13 @@ class BookController extends Controller
 
         return redirect(action('BookController@show', $book_id));
     }
+
+    public function deleteReview(Request $request){
+        $id = $request->input('review_id');
+
+        Review::find($id)->delete();
+
+        return 'success';
+//        return $request->all();
+    }
 }
