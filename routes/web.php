@@ -32,9 +32,12 @@ Route::get('/bookshops/create', 'BookshopController@create');
 Route::post('/bookshops', 'BookshopController@store');
 Route::get('/bookshops', 'BookshopController@index');
 
+Route::get('/bookshops/{id}', 'BookshopController@show');
+
 
 Route::post('/books/{id}/review', 'BookController@storeReview')->middleware('auth');
-Route::post('/books/reviews/delete', 'BookController@deleteReview');
+
+Route::post('/books/reviews/delete', 'BookController@deleteReview')->middleware('can:admin');
 
 // authors
 Route::get('/authors', 'AuthorController@index');

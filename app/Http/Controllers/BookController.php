@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Publisher;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
@@ -120,6 +121,8 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $book->delete();
 
+        Session::flash('success-message', 'asdf');
+
         return redirect(action('BookController@index'));
     }
 
@@ -138,9 +141,9 @@ class BookController extends Controller
     public function deleteReview(Request $request){
         $id = $request->input('review_id');
 
-        Review::find($id)->delete();
+        $review = Review::find($id);
+        $review->delete();
 
-        return 'success';
-//        return $request->all();
+        return redirect(action('BookController@show', $review->book_id));
     }
 }

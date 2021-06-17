@@ -44,4 +44,10 @@ class BookshopController extends Controller
 
         return view('bookshop.index', compact('bookshops'));
     }
+
+
+    public function show($id){
+        $bookshop = Bookshop::findOrFail($id);
+        return view('bookshop.show', compact('bookshop'));
+    }
 }
