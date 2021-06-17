@@ -34,20 +34,26 @@
             <input type="number" min="0" step="1" name="quantity">
             <input type="submit" value="Submit">
         </form>
-{{--    @else--}}
-{{--        You need to <a href="{{ route('login') }}">login</a> first!--}}
-{{--    @endif--}}
+    {{--    @else--}}
+    {{--        You need to <a href="{{ route('login') }}">login</a> first!--}}
+    {{--    @endif--}}
 
     <h3>Reviews</h3>
-    <form method="post" action="{{ action('BookController@storeReview', $book->id) }}">
-        @csrf
-        <textarea name="text" cols="30" rows="10"></textarea>
 
-        {{-- <input type="hidden" name="book_id" value="{{ $book->id }}"> --}}
+{{--    @if(Auth::check())--}}
+    @auth
+        <form method="post" action="{{ action('BookController@storeReview', $book->id) }}">
+            @csrf
+            <textarea name="text" cols="30" rows="10"></textarea>
 
-        <input type="number" min="0" max="10" step="1" name="rating">
-        <input type="submit" value="Submit">
-    </form>
+            {{-- <input type="hidden" name="book_id" value="{{ $book->id }}"> --}}
+            <input type="number" min="0" max="10" step="1" name="rating">
+            <input type="submit" value="Submit">
+        </form>
+    @else
+        <p>You are not logged in!</p>
+    @endauth
+{{--    @endif--}}
 
     @foreach($book->reviews as $review)
         <p>

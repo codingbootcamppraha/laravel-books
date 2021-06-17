@@ -75,7 +75,7 @@
             @endcan
 
 
-            @if(Auth::user()->can('admin'))
+            @if(Auth::check() && Auth::user()->can('admin'))
                 <h1 style="color:white">You are admin!</h1>
             @endif
 
@@ -84,12 +84,12 @@
                 <h1 style="color:white">You are not admin</h1>
             @endif
 
-            @if(Auth::user()->cant('admin'))
+            @if(Auth::check() && Auth::user()->cant('admin'))
                 <h1 style="color:white">You are not admin</h1>
             @endif
 
 
-            @if(Auth::user()->can('has-role', 'admin'))
+            @if(Auth::check() && Auth::user()->can('has-role', 'admin'))
                 <h1>You have admin role</h1>
             @endif
 

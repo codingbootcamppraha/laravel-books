@@ -33,8 +33,7 @@ Route::post('/bookshops', 'BookshopController@store');
 Route::get('/bookshops', 'BookshopController@index');
 
 
-
-Route::post('/books/{id}/review', 'BookController@storeReview');
+Route::post('/books/{id}/review', 'BookController@storeReview')->middleware('auth');
 
 // authors
 Route::get('/authors', 'AuthorController@index');
