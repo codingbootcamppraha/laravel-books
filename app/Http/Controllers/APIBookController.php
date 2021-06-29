@@ -28,4 +28,13 @@ class APIBookController extends Controller
         // return the Eloquent object as JSON
         return $book;
     }
+
+    public function detail($id_of_a_book)
+    {
+        // get the book from the database by its id column
+        $book = Book::findOrFail($id_of_a_book);
+
+        // return a JSON with the book's data
+        return $book;
+    }
 }

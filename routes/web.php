@@ -39,6 +39,15 @@ Route::post('/books/{id}/review', 'BookController@storeReview')->middleware('aut
 
 Route::post('/books/reviews/delete', 'BookController@deleteReview')->middleware('can:admin');
 
+// books
+Route::view('/book/{book_id}/{path?}', 'books/detail')->where(['book_id' => '^\d+$', 'path' => '.*']);
+
+//          /api/book/1
+//          /api/book/2
+//          /api/book/1231515
+//          /api/book/whatever
+Route::get('/api/book/{book_id}', 'APIBookController@detail');
+
 // authors
 Route::get('/authors', 'AuthorController@index');
 Route::get('/authors/create', 'AuthorController@create');
