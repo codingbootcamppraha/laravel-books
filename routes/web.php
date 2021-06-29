@@ -47,6 +47,7 @@ Route::view('/book/{book_id}/{path?}', 'books/detail')->where(['book_id' => '^\d
 //          /api/book/1231515
 //          /api/book/whatever
 Route::get('/api/book/{book_id}', 'APIBookController@detail');
+Route::post('/api/book/{book_id}/review', 'APIBookController@storeReview');
 
 // authors
 Route::get('/authors', 'AuthorController@index');

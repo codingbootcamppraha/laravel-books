@@ -17,7 +17,11 @@ export default function App() {
     const [book, setBook] = useState(null);
 
     const loadBook = async () => {
-        const response = await fetch('/api/book/' + bookId);
+        const response = await fetch('/api/book/' + bookId, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
         const data = await response.json();
 
         setBook(data);
