@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// react authentication
+Route::view('/sign-in', 'auth.react-auth');
+Route::view('/sign-up', 'auth.react-auth');
 
 Route::get('/eshop', 'EshopController@index');
 

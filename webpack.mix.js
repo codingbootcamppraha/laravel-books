@@ -24,6 +24,7 @@ if (!mix.inProduction()) {
 
 mix.sass('resources/css/style.scss', 'public/css');
 mix.js('resources/js/BookDetail/index.jsx', 'public/js/book-detail.js').react();
+mix.js('resources/js/Auth/index.jsx', 'public/js/auth.js').react();
 
 mix.browserSync({
         host: 'localhost',
