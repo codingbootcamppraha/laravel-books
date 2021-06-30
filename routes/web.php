@@ -18,10 +18,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/api/books', 'APIBookController@index');
-
-Route::get('/api/books/{id}', 'APIBookController@show');
-
 Route::get('/eshop', 'EshopController@index');
 
 Route::get('/eshop/categories/{id}', 'EshopController@category');
@@ -42,12 +38,7 @@ Route::post('/books/reviews/delete', 'BookController@deleteReview')->middleware(
 // books
 Route::view('/book/{book_id}/{path?}', 'books/detail')->where(['book_id' => '^\d+$', 'path' => '.*']);
 
-//          /api/book/1
-//          /api/book/2
-//          /api/book/1231515
-//          /api/book/whatever
-Route::get('/api/book/{book_id}', 'APIBookController@detail');
-Route::post('/api/book/{book_id}/review', 'APIBookController@storeReview');
+
 
 // authors
 Route::get('/authors', 'AuthorController@index');

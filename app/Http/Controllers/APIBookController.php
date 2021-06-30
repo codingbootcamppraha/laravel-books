@@ -55,6 +55,7 @@ class APIBookController extends Controller
         // create a review for the book
         $review = new Review;
         $review->book_id = $book->id;
+        $review->user_id = auth()->user()->id;
         $review->text = $text;
         $review->rating = $rating;
         $review->save();

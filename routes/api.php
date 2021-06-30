@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//      /api/books
+Route::get('/books', 'APIBookController@index');
+//      /api/books/{id}
+Route::get('/books/{id}', 'APIBookController@show');
+
+//      /api/book/1
+//      /api/book/2
+//      /api/book/1231515
+//      /api/book/whatever
+Route::get('/book/{book_id}', 'APIBookController@detail');
+Route::post('/book/{book_id}/review', 'APIBookController@storeReview');
