@@ -1,4 +1,4 @@
-export default function Logout() {
+export default function Logout({ logoutCallback }) {
 
     const handleClick = async (event) => {
         event.preventDefault();
@@ -16,6 +16,7 @@ export default function Logout() {
         const response_data = await response.json();
 
         // do something with the fact that the user is logged out
+        logoutCallback();
     }
 
     return (
