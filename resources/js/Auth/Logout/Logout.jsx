@@ -3,11 +3,13 @@ export default function Logout() {
     const handleClick = async (event) => {
         event.preventDefault();
 
-        const response = await fetch('/logout', {
+        const token = localStorage.getItem('my_token');
+        const response = await fetch('/api/logout', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Authorization': `Bearer ${token}`,
             }
         })
 

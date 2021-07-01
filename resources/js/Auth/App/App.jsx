@@ -11,13 +11,18 @@ export default function App() {
 
     const loadUsersData = async () => {
 
+        const token = localStorage.getItem('my_token');
         const response = await fetch('/api/user', {
             headers: {
-                'Accept': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Authorization': `Bearer ${token}`
             }
         });
         const data = await response.json();
 
+        setUser(data);
         console.log(data);
 
     }

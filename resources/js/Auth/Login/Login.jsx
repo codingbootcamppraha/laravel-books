@@ -40,7 +40,7 @@ export default function Login(props) {
 
         const { message, user, token } = data;
 
-        localStorage.setItem('token', token);
+        localStorage.setItem('my_token', token);
         localStorage.setItem('user_data', JSON.stringify(data));
     }
 
