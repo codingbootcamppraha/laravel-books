@@ -22,7 +22,9 @@ export default function App() {
         });
         const data = await response.json();
 
+        console.log(data);
         if (data && data.message === 'success') {
+            console.log('in');
             setUser(data);
         } else {
             setUser(null);
@@ -41,13 +43,14 @@ export default function App() {
     return (
         user ? (
             <Logout logoutCallback={() => {
-                console.log('logging out');
                 setUser(null);
             }}/>
         ) : (
             <Switch>
                 <Route exact path="/sign-in">
-                    <Login />
+                    <Login loginCallback={ (user) => {
+                        setUser(user);
+                    }}/>
                 </Route>
                 <Route exact path="/sign-up">
                     <Register />

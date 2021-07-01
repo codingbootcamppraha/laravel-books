@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Login(props) {
+export default function Login({ loginCallback }) {
 
     const [{email, password}, setValues] = useState({
         email: '',
@@ -37,8 +37,11 @@ export default function Login(props) {
         });
 
         const data = await response.json();
-
         const { message, user, token } = data;
+
+        if (data.message === 'success') {
+            loginCallback(user);
+        }
 
         localStorage.setItem('my_token', token);
         localStorage.setItem('user_data', JSON.stringify(data));
