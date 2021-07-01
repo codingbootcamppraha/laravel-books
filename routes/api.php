@@ -29,3 +29,7 @@ Route::get('/books/{id}', 'APIBookController@show');
 //      /api/book/whatever
 Route::get('/book/{book_id}', 'APIBookController@detail');
 Route::post('/book/{book_id}/review', 'APIBookController@storeReview');
+
+Route::post('token', 'UserController@token');
+Route::get('user', 'UserController@user')->middleware('auth:sanctum');
+Route::post('logout', 'UserController@logout')->middleware('auth:sanctum');
