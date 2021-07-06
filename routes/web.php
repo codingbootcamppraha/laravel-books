@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,3 +69,20 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 
+
+Route::get('test-email', function () {
+    $usersEmails = User::all()->pluck('email');
+    $name        = 'Slavo';
+
+    Mail::to($usersEmails)
+        ->send(new \App\Mail\TestEmail($name));
+
+    return 'hello from email';
+});
+
+Route::get('test-notification', function () {
+    $user = User::first();
+
+    $users = User::all();
+    foreach($users as $user) $user->notify(new \App\Notifications\TestNotification());
+});
