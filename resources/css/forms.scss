@@ -12,3 +12,14 @@ form {
         flex-direction: column;
     }
 }
+
+.book-review {
+    input, textarea {
+        border: 1px solid silver;
+        padding: 0.5em 0.5em;
+        border-radius: 0.25em;
+    }
+    input[type="number"] {
+        width: 4em;
+    }
+}

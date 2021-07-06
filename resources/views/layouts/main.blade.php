@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="{{ mix('css/style.css') }}">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 

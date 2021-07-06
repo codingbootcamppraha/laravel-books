@@ -19,10 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/api/books', 'APIBookController@index');
-
-Route::get('/api/books/{id}', 'APIBookController@show');
+// react authentication
+Route::view('/sign-in', 'auth.react-auth');
+Route::view('/sign-up', 'auth.react-auth');
 
 Route::get('/eshop', 'EshopController@index');
 
@@ -40,6 +39,11 @@ Route::get('/bookshops/{id}', 'BookshopController@show');
 Route::post('/books/{id}/review', 'BookController@storeReview')->middleware('auth');
 
 Route::post('/books/reviews/delete', 'BookController@deleteReview')->middleware('can:admin');
+
+// books
+Route::view('/book/{book_id}/{path?}', 'books/detail')->where(['book_id' => '^\d+$', 'path' => '.*']);
+
+
 
 // authors
 Route::get('/authors', 'AuthorController@index');
