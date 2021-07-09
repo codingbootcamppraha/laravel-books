@@ -6,7 +6,8 @@
 
 <h3>Available books</h3>
     <ul>
-        <li>Hp</li>
-        <li>Lotr</li>
+        @foreach($bookshop->books as $book)
+            <li>{{ $book->title }}</li>
+        @endforeach
     </ul>
 @endsection

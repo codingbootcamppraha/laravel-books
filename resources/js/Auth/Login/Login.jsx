@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Login(props) {
+export default function Login({ loginCallback }) {
 
     const [{email, password}, setValues] = useState({
         email: '',
@@ -11,17 +11,40 @@ export default function Login(props) {
 
         event.preventDefault();
 
-        let request_data = {email, password};
-        const response = await fetch('/login', {
+        // let request_data = {email, password};
+        // const response = await fetch('/login', {
+        //     method: 'POST',
+        //     body: JSON.stringify(request_data),
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-type': 'application/json',
+        //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        //     }
+        // });
+        // const response_data = await response.json();
+
+        const response = await fetch('/api/token', {
             method: 'POST',
-            body: JSON.stringify(request_data),
             headers: {
+                'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Content-type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            })
         });
-        const response_data = await response.json();
+
+        const data = await response.json();
+        const { message, user, token } = data;
+
+        if (data.message === 'success') {
+            loginCallback(user);
+        }
+
+        localStorage.setItem('my_token', token);
+        localStorage.setItem('user_data', JSON.stringify(data));
     }
 
     const handleChange = (event) => {

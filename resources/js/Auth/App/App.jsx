@@ -11,14 +11,24 @@ export default function App() {
 
     const loadUsersData = async () => {
 
+        const token = localStorage.getItem('my_token');
         const response = await fetch('/api/user', {
             headers: {
-                'Accept': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Authorization': `Bearer ${token}`
             }
         });
         const data = await response.json();
 
         console.log(data);
+        if (data && data.message === 'success') {
+            console.log('in');
+            setUser(data);
+        } else {
+            setUser(null);
+        }
 
     }
 
@@ -32,11 +42,15 @@ export default function App() {
 
     return (
         user ? (
-            <Logout />
+            <Logout logoutCallback={() => {
+                setUser(null);
+            }}/>
         ) : (
             <Switch>
                 <Route exact path="/sign-in">
-                    <Login />
+                    <Login loginCallback={ (user) => {
+                        setUser(user);
+                    }}/>
                 </Route>
                 <Route exact path="/sign-up">
                     <Register />
