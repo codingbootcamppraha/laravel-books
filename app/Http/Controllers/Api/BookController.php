@@ -17,4 +17,15 @@ class BookController extends Controller
 
         return $books;
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->query('search');
+
+        $books = Book::where('title', 'like', "%{$search}%")
+            ->limit(5)
+            ->get();
+
+        return $books;
+    }
 }

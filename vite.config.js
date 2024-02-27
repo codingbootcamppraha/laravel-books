@@ -12,6 +12,7 @@ export default ({ mode }) => {
                     'resources/css/common.scss',
                     'resources/js/app.js',
                     'resources/js/latest-books.js',
+                    'resources/js/book-search.js',
                 ],
                 refresh: true,
             }),

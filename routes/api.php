@@ -23,3 +23,4 @@ Route::get('test/model', ['App\Http\Controllers\Api\TestController', 'modelRespo
 Route::get('test/collection', ['App\Http\Controllers\Api\TestController', 'collectionResponse']);
 
 Route::get('books/latest', ['App\Http\Controllers\Api\BookController', 'latest']);
+Route::get('books/search', ['App\Http\Controllers\Api\BookController', 'search']);
