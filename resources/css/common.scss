@@ -1,3 +1,11 @@
-.highlighted {
-    color: red;
+nav {
+    a {
+        color: black;
+        text-decoration: none;
+        
+        &.highlighted {
+            color: red;
+        }
+    }
 }
+

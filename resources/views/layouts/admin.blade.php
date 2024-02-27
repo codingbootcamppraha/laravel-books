@@ -9,6 +9,7 @@
     <nav>
         <a href="{{ route('admin.index') }}">Home</a>
         <a href="{{ route('admin.author.index') }}">Authors list</a>
+        <a href="{{ route('admin.book.index') }}">Books list</a>
     </nav>
     <h1>Admin</h1>
 
