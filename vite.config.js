@@ -10,7 +10,8 @@ export default ({ mode }) => {
                 input: [
                     'resources/css/app.css',
                     'resources/css/common.scss',
-                    'resources/js/app.js'
+                    'resources/js/app.js',
+                    'resources/js/latest-books.js',
                 ],
                 refresh: true,
             }),

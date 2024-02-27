@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('api/test/array', ['App\Http\Controllers\Api\TestController', 'arrayResponse']);
+Route::get('test/model', ['App\Http\Controllers\Api\TestController', 'modelResponse']);
+Route::get('test/collection', ['App\Http\Controllers\Api\TestController', 'collectionResponse']);
+
+Route::get('books/latest', ['App\Http\Controllers\Api\BookController', 'latest']);
