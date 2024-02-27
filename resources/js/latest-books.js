@@ -13,11 +13,10 @@ const generateList = (data) => {
 
     if (listElement) {
         data.forEach(book => {
-            listElement.innerHTML += `<li>
-                ${book.title}<br>
-                <p>${book.description}</p>
-                <img src="${book.image}" />
-            </li>`
+            listElement.innerHTML += `<div>
+            <img src="${book.image}" /><br>
+            ${book.title}
+            </div>`
         });
     }
 }

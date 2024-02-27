@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', ['App\Http\Controllers\HomepageController', 'index']);
+Route::get('/book/{id}', ['App\Http\Controllers\BookController', 'show']);
+Route::post('/book/{id}/review', ['App\Http\Controllers\BookController', 'review'])->middleware('auth');
 
 Route::get('/about-us', function () {
     return view('about.about-us');
