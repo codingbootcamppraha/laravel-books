@@ -12,7 +12,13 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::limit(10)
+            ->with('authors')
             ->get();
+
+        // // .....
+        // if ($some_condition) {
+        //     $books->load('publishers');
+        // }
         
         return view('admin.books.index', compact('books'));
     }

@@ -11,6 +11,7 @@ class BookController extends Controller
     public function latest()
     {
         $books = Book::orderBy('publication_date', 'desc')
+            ->with('authors')
             ->limit(10)
             ->get();
 

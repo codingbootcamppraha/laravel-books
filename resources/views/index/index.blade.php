@@ -8,4 +8,12 @@
 
     <ul id="latest-books"></ul>
     @vite('resources/js/latest-books.js')
+
+    @foreach ($crime_books as $book)
+        <div class="book">
+            <p>{{ $book->title }}</p>
+            <p>Authors: {{ $book->authors->pluck('name')->join(', ') }}</p>
+            <hr>
+        </div>
+    @endforeach
 @endsection
