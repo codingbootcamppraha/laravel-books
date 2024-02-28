@@ -10,5 +10,10 @@
         "laravel-vite-plugin": "^1.0.0",
         "sass": "^1.71.1",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "@vitejs/plugin-react": "^4.2.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     }
 }
