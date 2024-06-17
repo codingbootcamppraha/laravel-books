@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 class BookController extends Controller
 {
@@ -33,19 +34,20 @@ class BookController extends Controller
     public function store(Request $request, $id = null)
     {
         if ($id) {
-            $request->validate([
-                'slug' => 'required'
-            ]);
-
             $book = Book::findOrFail($id);
         } else {
-            $request->validate([
-                'slug' => 'required|unique:books',
-                'isbn' => 'unique:books'
-            ]);
-
             $book = new Book;
         }
+
+        $request->validate([
+            'slug' => [
+                'required',
+                Rule::unique('books')->ignore($book->id)
+            ],
+            'isbn' => [
+                Rule::unique('books')->ignore($book->id)
+            ],
+        ]);
 
         $book->slug = $request->input('slug');
         $book->title = $request->input('title');
