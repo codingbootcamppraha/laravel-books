@@ -8,6 +8,7 @@
 <body>
     <nav>
         <a href="{{ route('admin.authors.index') }}">Authors list</a>
+        <a href="{{ route('admin.books.index') }}">Books list</a>
     </nav>
     @yield('content')
 </body>
