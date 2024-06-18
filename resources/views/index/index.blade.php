@@ -21,7 +21,7 @@
             @foreach ($crime_books as $book)
                 <div class="books-list__book">
                     <img src="{{ $book->image }}" alt="Book cover">
-                    <p>{{ $book->title }}</p>
+                    <a href="{{ route('book.show', $book->id) }}">{{ $book->title }}</a>
                     <p> by {{ $book->authors->pluck('name')->join(', ') }}</p>
                 </div>
             @endforeach
