@@ -44,3 +44,28 @@
         gap: 1rem;
     }
 }
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+    position: relative;
+    height: 100px;
+
+    &__results {
+        position: absolute;
+        top: 100px;
+        background-color: white;
+        padding: 0 10px;
+        border: 1px solid black;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    input {
+        width: 100%;
+        max-width: 620px;
+    }
+}

@@ -10,6 +10,8 @@
         @endauth
         <p>We are the best online bookstore ever...</p>
     </div>
+    
+    @include('common.search')
 
     <h2>Our latest books:</h2>
     <div id="latest-books" class="latest-books"></div>

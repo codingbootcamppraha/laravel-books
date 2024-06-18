@@ -13,7 +13,8 @@ export default ({ mode }) => {
                     'resources/css/styles.scss',
                     'resources/js/app.js',
                     'resources/js/partners.jsx',
-                    'resources/js/latest-books.js'
+                    'resources/js/latest-books.js',
+                    'resources/js/book-search.js'
                 ],
                 refresh: true,
             }),
