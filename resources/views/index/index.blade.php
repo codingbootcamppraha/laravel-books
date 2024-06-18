@@ -3,24 +3,26 @@
 ])
 
 @section('content')
-    <h1>Bookstore</h1>
-    <p>We are the best online bookstore ever...</p>
+    <div class="intro">
+        <h1>Bookstore</h1>
+        <p>We are the best online bookstore ever...</p>
+    </div>
 
-    <div id="latest-books"></div>
+    <h2>Our latest books:</h2>
+    <div id="latest-books" class="latest-books"></div>
     @vite('resources/js/latest-books.js')
 
     <div>
         <h2>Crime books:</h2>
-        @foreach ($crime_books as $book)
-            <div class="book">
-                <p>{{ $book->title }}</p>
-                <p> by 
-                    @foreach ($book->authors as $author)
-                        {{ $author->name }}
-                    @endforeach
-                </p>
-            </div>
-        @endforeach
+        <div class="books-list">
+            @foreach ($crime_books as $book)
+                <div class="books-list__book">
+                    <img src="{{ $book->image }}" alt="Book cover">
+                    <p>{{ $book->title }}</p>
+                    <p> by {{ $book->authors->pluck('name')->join(', ') }}</p>
+                </div>
+            @endforeach
+        </div>
     </div>
 
 @endsection

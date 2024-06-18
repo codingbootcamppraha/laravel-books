@@ -10,7 +10,7 @@ export default ({ mode }) => {
             laravel({
                 input: [
                     'resources/css/app.css',
-                    'resources/css/test.scss',
+                    'resources/css/styles.scss',
                     'resources/js/app.js',
                     'resources/js/partners.jsx',
                     'resources/js/latest-books.js'

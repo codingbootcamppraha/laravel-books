@@ -1,0 +1,46 @@
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.latest-books {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+
+    &__book {
+        width: 100px;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+
+    &__book {
+        width: 100px;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.partners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}

@@ -5,7 +5,7 @@ const loadData = async () => {
     const data = await response.json();
  
     data.forEach(book => {
-        latestBooksContainer.innerHTML += `<div><img src=${book.image}><p>${book.title}</p></div>`
+        latestBooksContainer.innerHTML += `<div class="latest-books__book"><img src=${book.image}><p>${book.title}</p></div>`
     });
 }
 
