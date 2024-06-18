@@ -9,4 +9,18 @@
     <div id="latest-books"></div>
     @vite('resources/js/latest-books.js')
 
+    <div>
+        <h2>Crime books:</h2>
+        @foreach ($crime_books as $book)
+            <div class="book">
+                <p>{{ $book->title }}</p>
+                <p> by 
+                    @foreach ($book->authors as $author)
+                        {{ $author->name }}
+                    @endforeach
+                </p>
+            </div>
+        @endforeach
+    </div>
+
 @endsection
