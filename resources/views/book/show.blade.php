@@ -38,10 +38,15 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('book.review.store', $book->id) }}" method="post">
-            @csrf
-            <textarea name="text"></textarea><br>
-            <button type="submit">Submit</button>
-        </form>
+
+        @if ($book->reviews->pluck('user_id')->contains(auth()->id()))
+            Review has been already submitted by you.
+        @else
+            <form action="{{ route('book.review.store', $book->id) }}" method="post">
+                @csrf
+                <textarea name="text"></textarea><br>
+                <button type="submit">Submit</button>
+            </form>
+        @endif
     @endauth
 @endsection
