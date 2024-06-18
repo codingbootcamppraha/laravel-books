@@ -9,7 +9,7 @@ const fetchSearchResults = async (searchValue) => {
 
     if (searchValue && searchValue !== '') {
         data.forEach(book => {
-            searchResultsContainer.innerHTML += `<p class="search-results__result">${book.title}</p>`
+            searchResultsContainer.innerHTML += `<a href="/book/${book.id}" class="search-results__result">${book.title}</a>`
         });
     }
 }
