@@ -5,6 +5,9 @@
 @section('content')
     <div class="intro">
         <h1>Bookstore</h1>
+        @auth
+            <p>Hi {{ auth()->user()->name }}!</p>
+        @endauth
         <p>We are the best online bookstore ever...</p>
     </div>
 
