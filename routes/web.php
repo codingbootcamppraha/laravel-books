@@ -10,3 +10,8 @@ Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('h
 Route::get('/about-us', [App\Http\Controllers\AboutController::class, 'index'])->name('about-us');
 Route::get('/book/{book_id}', [App\Http\Controllers\BookController::class, 'show'])->name('book.show');
 Route::post('/book/{book_id}/review', [App\Http\Controllers\ReviewController::class, 'store'])->name('book.review.store');
+
+Route::group(['middleware' => 'can:admin'], function() {
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\BookController::class, 'index']);
+    // ...
+});
