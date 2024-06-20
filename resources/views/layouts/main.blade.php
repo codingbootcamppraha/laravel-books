@@ -14,6 +14,8 @@
     @yield('content')
     @yield('content-test')
     
+    <div id="root"></div>
+
     <div id="partners"></div>
 
     @viteReactRefresh
